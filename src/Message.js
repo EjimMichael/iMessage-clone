@@ -1,13 +1,22 @@
 import { Avatar } from '@material-ui/core';
+import { PhotoAlbumRounded } from "@material-ui/icons";
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 import './Message.css';
 
-function Message({id, contents}) {
+function Message({ 
+    id, 
+    contents: {
+    timestamp, displayName, email, message, photo, uid
+}, }) {
+    const user = useSelector(selectUser);
+
     return (
-        <div className="message">
-            <Avatar />
-            <p>This is a message</p>
-            <small>timestamp</small>
+        <div className={`message ${user.email === email && "message__sender"}`}>
+            <Avatar src={photo} />
+            <p>{message}</p>
+            <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
         </div>
     )
 }
