@@ -3,7 +3,7 @@ import './SidebarChat.css';
 import { Avatar } from "@material-ui/core";
 import { useDispatch } from 'react-redux';
 import { setChat } from './features/chatSlice';
-import db from './firebase';
+import db from "./firebase";
 import * as timeago from "timeago.js";
 
 function Sidebarchat({id, chatName}) {
